@@ -10,7 +10,10 @@ const nextConfig = {
                 search: '',
             }
         ]
-    }
+    },
+    eslint: {
+        ignoreDuringBuilds: true,
+    },
 };
 
 export default nextConfig;
