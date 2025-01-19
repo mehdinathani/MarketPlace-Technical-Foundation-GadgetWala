@@ -7,6 +7,8 @@ import v3circle from "@/app/assets/v3circle.png";
 import { client } from "@/sanity/lib/client";
 import Link from "next/link";
 import { useEffect, useState } from "react";
+import CartComponent from "../components/cartComponent";
+
 
 interface Product {
     title: string;
@@ -65,10 +67,23 @@ export default function ProductsPage() {
         fetchData();
     }, [sortBy, category, searchQuery]);
 
+
+
     const addToCart = (product: Product) => {
-        console.log("Adding to cart:", product);
-        localStorage.setItem("cart", JSON.stringify(product));
+        let cart = JSON.parse(localStorage.getItem("cart") || "{}");
+        if (cart[product.title]) {
+            cart[product.title] = {
+                ...cart[product.title], quantity: cart[product.title].quantity + 1,
+            };
+        } else {
+            cart[product.title] = { ...product, quantity: 1 }
+        }
+        localStorage.setItem('cart', JSON.stringify(cart));
+
+        window.location.reload();
     };
+
+
 
     if (loading) {
         return <div className="text-center py-16">Loading products...</div>;
@@ -161,6 +176,9 @@ export default function ProductsPage() {
                     </Link>
                 ))}
             </div>
+            <div>
+                <CartComponent />
+            </div>
         </div>
     );
 }
@@ -191,7 +209,7 @@ function ProductCard({ product, addToCart }: ProductCardProps) {
             <div className="flex items-center space-x-2">
                 <p className="text-sm text-gray-500 font-bold">${price}</p>
                 {discountedPrice && (
-                    <p className="text-xs text-pink-500 line-through">${discountedPrice.toFixed(2)}</p>
+                    <p className="text-xs text-pink-500 line-through">${discountedPrice}</p>
                 )}
             </div>
             <button
