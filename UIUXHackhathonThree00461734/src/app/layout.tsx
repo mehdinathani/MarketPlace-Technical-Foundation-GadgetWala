@@ -47,7 +47,9 @@ export default function RootLayout({
         <TopHeader />
 
         {/* Navbar */}
+
         <Navbar />
+
         {children}
         <div className="w-auto justify-center items-center mx-8">
 

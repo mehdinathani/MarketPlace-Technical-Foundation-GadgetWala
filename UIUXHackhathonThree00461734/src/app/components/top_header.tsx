@@ -14,7 +14,7 @@ export default function TopHeader() {
                 <div className="w-4 h-4 relative">
                     <Image src={env} alt="Envelope Icon" layout="fill" objectFit="contain" />
                 </div>
-                <span className="text-sm md:text-base font-medium">mhhasanul@gmail.com</span>
+                <span className="text-sm md:text-base font-medium">mehdinathani1@gmail.com</span>
             </div>
 
             {/* Middle Section */}

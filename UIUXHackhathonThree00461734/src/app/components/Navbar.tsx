@@ -1,6 +1,8 @@
 import Link from "next/link";
 
+
 export default function Navbar() {
+
     return (
         <div className="h-16 bg-white text-black flex items-center">
             <div className="container mx-auto flex items-center justify-between px-4 sm:px-40">
