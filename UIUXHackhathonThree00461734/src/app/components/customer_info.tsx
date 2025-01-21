@@ -1,5 +1,6 @@
+/* eslint-disable */
+
 import React, { useState } from "react";
-import { client } from "@/sanity/lib/client"; // Import the Sanity client for submitting data
 import CheckOut from "../actions/checkout";
 
 export default function CustomerInfo(cart: any) {

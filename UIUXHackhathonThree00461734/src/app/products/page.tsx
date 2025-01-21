@@ -1,7 +1,5 @@
 "use client";
 
-import listViewIcon from "@/app/assets/list_view_icon.png";
-import tileViewIcon from "@/app/assets/tile_view_icon.png";
 import Image from "next/image";
 import v3circle from "@/app/assets/v3circle.png";
 import { client } from "@/sanity/lib/client";
@@ -63,7 +61,7 @@ export default function ProductsPage() {
 
 
     const addToCart = (product: Product) => {
-        let cart = JSON.parse(localStorage.getItem("cart") || "{}");
+        const cart = JSON.parse(localStorage.getItem("cart") || "{}");
         if (cart[product.title]) {
             cart[product.title] = {
                 ...cart[product.title], quantity: cart[product.title].quantity + 1,

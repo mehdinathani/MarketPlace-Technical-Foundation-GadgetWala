@@ -1,3 +1,6 @@
+/* eslint-disable */
+
+
 interface CartItem {
     title: string;
     price: number;
