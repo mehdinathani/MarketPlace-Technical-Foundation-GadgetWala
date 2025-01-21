@@ -3,13 +3,7 @@
 import { useState, useEffect } from "react";
 import CustomerInfo from "./customer_info";
 
-interface CartItem {
-    title: string;
-    price: number;
-    quantity: number;
-    image?: string;
-    slug: string;
-}
+
 
 export default function CartComponent() {
     const [cart, setCart] = useState<Record<string, CartItem>>({});
@@ -99,7 +93,10 @@ export default function CartComponent() {
             )}
 
             {showForm && (
-                <div><CustomerInfo /></div>
+                <div>
+                    <CustomerInfo  {...cart} /> {/* Convert cart to an array */}
+                </div>
+
             )
             }
         </div>

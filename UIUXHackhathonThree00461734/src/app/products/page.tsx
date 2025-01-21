@@ -10,13 +10,6 @@ import { useEffect, useState } from "react";
 import CartComponent from "../components/cartComponent";
 
 
-interface Product {
-    title: string;
-    price: number;
-    discountedPrice?: number;
-    image?: string;
-    slug: string;
-}
 
 export default function ProductsPage() {
     const [products, setProducts] = useState<Product[]>([]);

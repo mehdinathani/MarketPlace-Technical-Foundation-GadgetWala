@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import { client } from "@/sanity/lib/client"; // Import the Sanity client for submitting data
+import CheckOut from "../actions/checkout";
 
-export default function CustomerInfo() {
+export default function CustomerInfo(cart: any) {
     // State to store form data
     const [name, setName] = useState("");
     const [phone, setPhone] = useState("");
@@ -18,24 +19,24 @@ export default function CustomerInfo() {
         setLoading(true);
         setSuccessMessage("");
 
-        try {
-            const customerData = {
-                _type: "customer", // Replace with your schema name for customer
-                name,
-                phone,
-                address,
-                email,
-            };
+        // try {
+        //     const customerData = {
+        //         _type: "customer", // Replace with your schema name for customer
+        //         name,
+        //         phone,
+        //         address,
+        //         email,
+        //     };
 
-            // Submit to Sanity
-            await client.create(customerData);
-            setSuccessMessage("Customer information submitted successfully!");
-        } catch (error) {
-            console.error("Error submitting form:", error);
-            setSuccessMessage("Failed to submit customer information.");
-        } finally {
-            setLoading(false);
-        }
+        //     // Submit to Sanity
+        //     await client.create(customerData);
+        //     setSuccessMessage("Customer information submitted successfully!");
+        // } catch (error) {
+        //     console.error("Error submitting form:", error);
+        //     setSuccessMessage("Failed to submit customer information.");
+        // } finally {
+        //     setLoading(false);
+        // }
     };
 
     return (
@@ -48,7 +49,7 @@ export default function CustomerInfo() {
                     {successMessage}
                 </div>
             )}
-            <form onSubmit={handleSubmit}>
+            <form onSubmit={async () => await CheckOut(cart, name, phone, address, email)}>
                 <div className="mb-4">
                     <label htmlFor="name" className="block text-sm font-medium text-gray-700">
                         Full Name
@@ -110,7 +111,7 @@ export default function CustomerInfo() {
                     className={`w-full py-2 px-4 bg-pink-500 text-white rounded-md mt-4 ${loading ? "opacity-50" : ""
                         }`}
                 >
-                    {loading ? "Submitting..." : "Submit Information"}
+
                 </button>
             </form>
         </div>
