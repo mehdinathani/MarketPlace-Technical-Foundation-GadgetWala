@@ -7,6 +7,7 @@ const createCustomerInSanity = async (
     email: string
 ) => {
     try {
+
         const customerObject = {
             _type: "customer",
             name: name,
@@ -27,13 +28,16 @@ const createCustomerInSanity = async (
 
 const createOrderInSanity = async (cart: CartItem[], customer_id: string) => {
     try {
+        const cartArray = Object.values(cart);
+
+
         const orderObject = {
             _type: "order",
             customer: {
                 _type: "reference",
                 _ref: customer_id,
             },
-            items: cart.map((item: CartItem) => ({
+            items: cartArray.map((item: CartItem) => ({
                 _type: "items",
                 product_id: item.product_id,
                 product_name: item.title,
@@ -44,7 +48,8 @@ const createOrderInSanity = async (cart: CartItem[], customer_id: string) => {
             order_date: new Date().toISOString(),
         };
 
-        // Await the creation of the order
+        console.log("Order object being sent to Sanity:", orderObject);
+
         const response = await client.create(orderObject);
         console.log("Order created in Sanity:", response);
         return response;
@@ -53,6 +58,7 @@ const createOrderInSanity = async (cart: CartItem[], customer_id: string) => {
         throw error;
     }
 };
+
 
 export default async function CheckOut(
     cart: CartItem[],

@@ -94,7 +94,8 @@ export default function CartComponent() {
 
             {showForm && (
                 <div>
-                    <CustomerInfo  {...cart} /> {/* Convert cart to an array */}
+                    <CustomerInfo cart={cart} />
+
                 </div>
 
             )

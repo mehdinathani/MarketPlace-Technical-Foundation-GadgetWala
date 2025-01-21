@@ -20,27 +20,20 @@ export default function CustomerInfo(cart: any) {
         setLoading(true);
         setSuccessMessage("");
 
-        // try {
-        //     const customerData = {
-        //         _type: "customer", // Replace with your schema name for customer
-        //         name,
-        //         phone,
-        //         address,
-        //         email,
-        //     };
-
-        //     // Submit to Sanity
-        //     await client.create(customerData);
-        //     setSuccessMessage("Customer information submitted successfully!");
-        // } catch (error) {
-        //     console.error("Error submitting form:", error);
-        //     setSuccessMessage("Failed to submit customer information.");
-        // } finally {
-        //     setLoading(false);
-        // }
+        try {
+            const response = await CheckOut(cart, name, phone, address, email);
+            setSuccessMessage("Order created successfully!");
+            console.log("Order response:", response);
+        } catch (error) {
+            console.error("Error in checkout process:", error);
+            setSuccessMessage("Failed to create order.");
+        } finally {
+            setLoading(false);
+        }
     };
 
     return (
+
         <div className="w-full max-w-lg mx-auto p-6 bg-white shadow-md rounded-md">
             <h2 className="text-2xl font-bold mb-4">Customer Information</h2>
             {successMessage && (
@@ -50,7 +43,8 @@ export default function CustomerInfo(cart: any) {
                     {successMessage}
                 </div>
             )}
-            <form onSubmit={async () => await CheckOut(cart, name, phone, address, email)}>
+            <form onSubmit={handleSubmit}>
+
                 <div className="mb-4">
                     <label htmlFor="name" className="block text-sm font-medium text-gray-700">
                         Full Name
@@ -109,11 +103,11 @@ export default function CustomerInfo(cart: any) {
                 <button
                     type="submit"
                     disabled={loading}
-                    className={`w-full py-2 px-4 bg-pink-500 text-white rounded-md mt-4 ${loading ? "opacity-50" : ""
-                        }`}
+                    className={`w-full py-2 px-4 bg-pink-500 text-white rounded-md mt-4 ${loading ? "opacity-50" : ""}`}
                 >
-
+                    {loading ? "Submitting..." : "Submit"}
                 </button>
+
             </form>
         </div>
     );
