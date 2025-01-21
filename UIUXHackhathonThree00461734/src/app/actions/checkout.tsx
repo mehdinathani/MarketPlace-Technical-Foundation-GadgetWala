@@ -1,70 +1,77 @@
 import { client } from "@/sanity/lib/client";
 
-const createCustomerInSanity = (name: string,
+const createCustomerInSanity = async (
+    name: string,
     phone: string,
     address: string,
-    email: string) => {
+    email: string
+) => {
     try {
         const customerObject = {
             _type: "customer",
             name: name,
             phone: phone,
             address: address,
-            email: email
-        }
-        const response = client.create(customerObject);
-        console.log("User created in sanity", response);
-        return response;
+            email: email,
+        };
 
+        // Await the creation of the customer
+        const response = await client.create(customerObject);
+        console.log("User created in Sanity:", response);
+        return response; // This contains the _id needed for the order
     } catch (error) {
-        console.log("Error creating user in sanity", error);
+        console.error("Error creating user in Sanity:", error);
         throw error;
     }
-}
+};
 
-const createOrderInSanity = (cart: CartItem[], customer_id: string) => {
+const createOrderInSanity = async (cart: CartItem[], customer_id: string) => {
     try {
         const orderObject = {
             _type: "order",
             customer: {
                 _type: "reference",
-                _ref: customer_id
+                _ref: customer_id,
             },
-            items: cart.map((item: CartItem) => (
-                {
-                    _type: "items",
-                    product_id: item.product_id,
-                    product_name: item.title,
-                    product_price: item.price,
-                    product_quantity: item.quantity,
-                    product_image: item.image,
-
-                }
-            )),
+            items: cart.map((item: CartItem) => ({
+                _type: "items",
+                product_id: item.product_id,
+                product_name: item.title,
+                product_price: item.price,
+                product_quantity: item.quantity,
+                product_image: item.image,
+            })),
             order_date: new Date().toISOString(),
+        };
 
-        }
-        const response = client.create(orderObject);
-        console.log("Order created in sanity", response);
+        // Await the creation of the order
+        const response = await client.create(orderObject);
+        console.log("Order created in Sanity:", response);
         return response;
-
     } catch (error) {
-        console.log("Error creating order in sanity", error);
+        console.error("Error creating order in Sanity:", error);
         throw error;
     }
-}
+};
 
-export default async function CheckOut(cart: CartItem[], name: string,
+export default async function CheckOut(
+    cart: CartItem[],
+    name: string,
     phone: string,
     address: string,
-    email: string) {
+    email: string
+) {
     try {
+        // Create the customer and wait for its completion
         const customer = await createCustomerInSanity(name, phone, address, email);
-        await createOrderInSanity(cart, customer._id);
-        console.log("Order created in sanity", customer);
+
+        // Create the order using the returned customer ID
+        const order = await createOrderInSanity(cart, customer._id);
+
+        console.log("Order successfully created in Sanity:", order);
+        return order; // Optional: Return the order for further processing
     } catch (error) {
-        console.log("Error creating order in sanity", error);
+        console.error("Error in checkout process:", error);
         throw error;
     }
-
 }
