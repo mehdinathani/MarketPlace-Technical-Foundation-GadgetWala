@@ -1,0 +1,9 @@
+Test Case ID,Test Case Description,Test Steps,Expected Result,Actual Result,Status,Severity Level,Assigned To,Remarks
+TC001,Validate product listing page,Open product page > Verify products,Products displayed correctly,Products displayed correctly,Passed,Low,-,No issues found
+TC002,Test API error handling,Disconnect API > Refresh page,Show fallback UI with error message,Error message shown,Passed,Medium,-,Handled gracefully
+TC003,Check cart functionality,Add product to cart > Verify cart contents,Cart updates with added product,Cart updates as expected,Passed,High,-,Works as expected
+TC004,Ensure responsiveness on mobile,Resize browser window > Check layout,Layout adjusts properly to screen size,some pages overflow found,failed,Medium,-,some issues in UI
+TC005,Product detail page,Click on random products,on product click product details show correctly,correct details found,Passed,Medium,-,fine
+TC006,Test navigation links ,All links navigate correctly ,,All links function as intended ,Passed,Low,-,No issues found
+TC007,Customer Information Store in Sanity,Post Some Orders,Information should store correctly,Update correctly,Passed,High,-,fine
+TC008,Order Detail should store on Sanity,Post Some Orders,Information should store correctly,Update correctly,Passed,High,-,fine
