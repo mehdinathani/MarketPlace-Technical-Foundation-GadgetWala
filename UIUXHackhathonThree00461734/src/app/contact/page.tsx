@@ -4,7 +4,7 @@ export default function Contact() {
             <div className="bg-white shadow-lg rounded-lg p-8 max-w-lg text-center">
                 <h1 className="text-3xl font-bold text-[#151875] mb-4">Contact Us</h1>
                 <p className="text-gray-600 text-lg mb-6">
-                    Have any questions? We'd love to hear from you!
+                    Have any questions? We`&apos;`d love to hear from you!
                 </p>
 
                 <div className="text-left space-y-4">

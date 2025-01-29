@@ -2,8 +2,6 @@
 
 import { client } from "@/sanity/lib/client"
 import Image from "next/image";
-import listViewIcon from "@/app/assets/list_view_icon.png";
-import tileViewIcon from "@/app/assets/tile_view_icon.png";
 import heartIcon from "@/app/assets/heart_icon.png";
 import fbIcon from "@/app/assets/fb_icon.png";
 import instaIcon from "@/app/assets/insta_icon.png";
