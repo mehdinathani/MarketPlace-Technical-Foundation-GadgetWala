@@ -1,3 +1,4 @@
+'use client'
 import Image from "next/image";
 import heroImage from "@/app/assets/sofa promotional header.png"
 import leftImage from "@/app/assets/leftHero.png"
@@ -28,7 +29,10 @@ export default function HeroSection() {
                         adipiscing in phasellus non in justo.
                     </p>
 
-                    <button className="w-[163px] h-[50px] bg-[#FB2E86] text-white font-bold rounded-md hover:bg-[#E0227A]">
+                    <button
+                        onClick={() => {
+                            window.location.href = "/products";
+                        }} className="w-[163px] h-[50px] bg-[#FB2E86] text-white font-bold rounded-md hover:bg-[#E0227A]">
                         Shop Now
                     </button>
                 </div>

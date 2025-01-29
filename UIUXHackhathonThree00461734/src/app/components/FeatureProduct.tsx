@@ -9,7 +9,7 @@ interface Product {
 
     image: string;
     title: string;
-    price: string;
+    price: number;
     oldPrice?: string; // Optional, if not all products have an old price
     slug: string;
 }

@@ -5,34 +5,35 @@ import Link from "next/link";
 
 
 import { useEffect, useState } from "react";
+import ProductCard from "./product_card";
 
 interface Product {
 
     image: string;
     title: string;
-    price: string;
+    price: number;
     oldPrice?: string; // Optional, if not all products have an old price
     slug: string;
 }
 
-function ProductCard({ image, title, price, oldPrice }: Product) {
+// function ProductCard({ image, title, price, oldPrice }: Product) {
 
 
-    return (
-        <div className="w-full max-w-[360px] bg-white shadow-lg rounded-lg flex flex-col items-center my-4">
-            <div className="w-[223px] h-[229px] bg-[#F6F7FB] flex items-center ">
-                <Image src={image} alt={title} width={200} height={200} />
-            </div>
-            <div className="flex flex-row justify-between px-4 py-2">
-                <h3 className="text-[16px] font-bold text-[#151875]">{title}</h3>
-                <div className="flex items-center space-x-2">
-                    <p className="text-[14px] font-bold text-[#151875]">${price}</p>
-                    <p className="text-[12px] text-[#FB2448] line-through">${oldPrice}</p>
-                </div>
-            </div>
-        </div>
-    );
-}
+//     return (
+//         <div className="w-full max-w-[360px] bg-white shadow-lg rounded-lg flex flex-col items-center my-4">
+//             <div className="w-[223px] h-[229px] bg-[#F6F7FB] flex items-center ">
+//                 <Image src={image} alt={title} width={200} height={200} />
+//             </div>
+//             <div className="flex flex-row justify-between px-4 py-2">
+//                 <h3 className="text-[16px] font-bold text-[#151875]">{title}</h3>
+//                 <div className="flex items-center space-x-2">
+//                     <p className="text-[14px] font-bold text-[#151875]">${price}</p>
+//                     <p className="text-[12px] text-[#FB2448] line-through">${oldPrice}</p>
+//                 </div>
+//             </div>
+//         </div>
+//     );
+// }
 
 export default function LatestProducts() {
     const [products, setProducts] = useState<Product[]>([]);
@@ -75,7 +76,7 @@ export default function LatestProducts() {
     }
 
     return (
-        <div className="w-full py-16 bg-[#F6F7FB]">
+        <div className="w-full py-16 bg-[#F6F7FB] gap-2">
             <h1 className="font-myFont text-[42px] text-[#151875] leading-[49.22px] mb-4 text-center">
                 Latest Products
             </h1>

@@ -6,6 +6,7 @@ import { client } from "@/sanity/lib/client";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import CartComponent from "../components/cartComponent";
+import AddToCartButton from "../components/add_to_cart_button";
 
 
 
@@ -203,7 +204,8 @@ function ProductCard({ product, addToCart }: ProductCardProps) {
                     <p className="text-xs text-pink-500 line-through">${discountedPrice}</p>
                 )}
             </div>
-            <button
+            <AddToCartButton product={product} />
+            {/* <button
                 onClick={(e) => {
                     e.preventDefault();
                     addToCart(product);
@@ -211,7 +213,7 @@ function ProductCard({ product, addToCart }: ProductCardProps) {
                 className="bg-pink-500 text-white py-2 px-6 rounded"
             >
                 Add to Cart
-            </button>
+            </button> */}
         </div>
     );
 }

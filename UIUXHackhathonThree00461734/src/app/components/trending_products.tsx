@@ -4,31 +4,32 @@ import { client } from "@/sanity/lib/client";
 import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
+import ProductCard from "./product_card";
 
 
 interface Product {
 
     image: string;
     title: string;
-    price: string;
+    price: number;
     oldPrice?: string; // Optional, if not all products have an old price
     slug: string;
 }
 
-function ProductCard({ image, title, price, oldPrice }: Product) {
-    return (
-        <div className="w-[270px] h-[350px] bg-white shadow-[0px_8px_40px_0px_#31208A0D] flex flex-col items-center">
-            <div className="w-[247px] h-[244px] bg-[#F5F6F8] flex items-center justify-center py-4">
-                <Image src={image} alt={title} width={200} height={200} className="object-contain" />
-            </div>
-            <div className="text-center mt-4">
-                <h3 className="text-[16px] font-bold text-[#151875]">{title}</h3>
-                <p className="text-[14px] font-normal text-[#151875]">{price}</p>
-                <p className="text-[12px] font-normal text-[#FB2448] line-through">{oldPrice}</p>
-            </div>
-        </div>
-    );
-}
+// function ProductCard({ image, title, price, oldPrice }: Product) {
+//     return (
+//         <div className="w-[270px] h-[350px] bg-white shadow-[0px_8px_40px_0px_#31208A0D] flex flex-col items-center">
+//             <div className="w-[247px] h-[244px] bg-[#F5F6F8] flex items-center justify-center py-4">
+//                 <Image src={image} alt={title} width={200} height={200} className="object-contain" />
+//             </div>
+//             <div className="text-center mt-4">
+//                 <h3 className="text-[16px] font-bold text-[#151875]">{title}</h3>
+//                 <p className="text-[14px] font-normal text-[#151875]">{price}</p>
+//                 <p className="text-[12px] font-normal text-[#FB2448] line-through">{oldPrice}</p>
+//             </div>
+//         </div>
+//     );
+// }
 
 export default function TrendingProducts() {
     const [products, setProducts] = useState<Product[]>([]);

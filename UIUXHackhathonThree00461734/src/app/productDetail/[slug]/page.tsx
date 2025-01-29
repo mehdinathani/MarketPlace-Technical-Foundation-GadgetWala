@@ -7,6 +7,7 @@ import fbIcon from "@/app/assets/fb_icon.png";
 import instaIcon from "@/app/assets/insta_icon.png";
 import twitterIcon from "@/app/assets/x_icon.png";
 import StarRatingComponent from "./start_rating";
+import AddToCartButton from "@/app/components/add_to_cart_button";
 
 interface Props {
     params: { slug: string }
@@ -111,12 +112,13 @@ export default async function ProductDetail({ params }: Props) {
                     <p className="mb-4">{product.description}</p>
 
                     <div className="flex gap-4 my-4">
-                        <button
+                        <AddToCartButton product={product} />
+                        {/* <button
                             onClick={addToCart}
                             className="bg-pink-500 text-white py-2 px-6 rounded"
                         >
                             Add to Cart
-                        </button>
+                        </button> */}
                         <Image src={heartIcon} alt="heart Icon" width={24} height={24} />
                     </div>
 

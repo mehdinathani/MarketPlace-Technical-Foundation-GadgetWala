@@ -5,7 +5,6 @@ import HeroSection from "./components/HeroSection";
 import LatestProducts from "./components/LatestProducts";
 import ShopexOffer from "./components/offer";
 import SubscribeSection from "./components/subscribe";
-import TopCategories from "./components/top_categories";
 import TrendingProducts from "./components/trending_products";
 import LatestBlogSection from "./components/LatestBlogSection";
 
@@ -33,8 +32,7 @@ export default function Home() {
       {/* Discount Item */}
       <DiscountItem />
 
-      {/* Top Categories */}
-      <TopCategories />
+
 
       {/* Subscribe Section */}
       <SubscribeSection />

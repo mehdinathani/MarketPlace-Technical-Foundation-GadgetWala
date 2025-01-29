@@ -49,7 +49,17 @@ export default function CartComponent() {
         <div className="mx-auto px-4 sm:px-6 lg:px-8 py-10">
             <h2 className="text-2xl font-bold text-center mb-6">Your Cart</h2>
             {Object.keys(cart).length === 0 ? (
-                <p className="text-center">Your cart is empty</p>
+                <div className="flex flex-col items-center gap-8">
+
+                    <p className="text-center">Your cart is empty</p>
+                    <p>Go to Shop</p>
+                    <button
+                        onClick={() => {
+                            window.location.href = "/products";
+                        }} className="w-[163px] h-[50px] bg-[#FB2E86] text-white font-bold rounded-md hover:bg-[#E0227A]">
+                        Shop Now
+                    </button>
+                </div>
             ) : (
                 <div>
                     <div className="space-y-4">
