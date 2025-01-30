@@ -61,19 +61,19 @@ export default function ProductsPage() {
 
 
 
-    const addToCart = (product: Product) => {
-        const cart = JSON.parse(localStorage.getItem("cart") || "{}");
-        if (cart[product.title]) {
-            cart[product.title] = {
-                ...cart[product.title], quantity: cart[product.title].quantity + 1,
-            };
-        } else {
-            cart[product.title] = { ...product, quantity: 1 }
-        }
-        localStorage.setItem('cart', JSON.stringify(cart));
+    // const addToCart = (product: Product) => {
+    //     const cart = JSON.parse(localStorage.getItem("cart") || "{}");
+    //     if (cart[product.title]) {
+    //         cart[product.title] = {
+    //             ...cart[product.title], quantity: cart[product.title].quantity + 1,
+    //         };
+    //     } else {
+    //         cart[product.title] = { ...product, quantity: 1 }
+    //     }
+    //     localStorage.setItem('cart', JSON.stringify(cart));
 
-        window.location.reload();
-    };
+    //     window.location.reload();
+    // };
 
 
 
@@ -164,7 +164,7 @@ export default function ProductsPage() {
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
                 {products.map((product) => (
                     <Link key={product.slug} href={`productDetail/${product.slug}`}>
-                        <ProductCard product={product} addToCart={addToCart} />
+                        <ProductCard product={product} />
                     </Link>
                 ))}
             </div>
@@ -177,10 +177,10 @@ export default function ProductsPage() {
 
 interface ProductCardProps {
     product: Product;
-    addToCart: (product: Product) => void;
+
 }
 
-function ProductCard({ product, addToCart }: ProductCardProps) {
+function ProductCard({ product }: ProductCardProps) {
     const { title, price, discountedPrice, image } = product;
 
     return (
