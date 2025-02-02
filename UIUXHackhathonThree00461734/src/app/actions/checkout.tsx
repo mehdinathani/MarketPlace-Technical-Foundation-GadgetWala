@@ -1,5 +1,6 @@
 import { client } from "@/sanity/lib/client";
 
+
 const createCustomerInSanity = async (
     name: string,
     phone: string,
@@ -52,6 +53,7 @@ const createOrderInSanity = async (cart: CartItem[], customer_id: string) => {
 
         const response = await client.create(orderObject);
         console.log("Order created in Sanity:", response);
+
         return response;
     } catch (error) {
         console.error("Error creating order in Sanity:", error);
@@ -80,4 +82,5 @@ export default async function CheckOut(
         console.error("Error in checkout process:", error);
         throw error;
     }
+
 }
