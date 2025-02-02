@@ -1,3 +1,4 @@
+'use client'
 import DiscountItem from "./components/discount_items";
 import FeaturedSection from "./components/featured_section";
 import FeaturedProducts from "./components/FeatureProduct";

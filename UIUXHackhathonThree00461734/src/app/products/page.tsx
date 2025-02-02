@@ -104,7 +104,7 @@ export default function ProductsPage() {
                     <input
                         type="text"
                         value={searchQuery}
-                        onChange={(e) => setSearchQuery(e.target.value)}
+                        onChange={(e) => setSearchQuery((e.target as HTMLInputElement).value)}
                         placeholder="Search"
                         className="w-60 h-10 p-2 border-2 border-[#E7E6EF] focus:outline-none"
                     />
