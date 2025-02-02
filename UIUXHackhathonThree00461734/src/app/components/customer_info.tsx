@@ -1,5 +1,6 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
+
 import React, { useState } from "react";
-import CheckOut from "../actions/checkout";
 
 export default function CustomerInfo({ cart }: { cart: any }) {
     // State to store form data
