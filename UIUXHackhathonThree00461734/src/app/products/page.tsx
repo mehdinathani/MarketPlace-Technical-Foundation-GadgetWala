@@ -1,4 +1,5 @@
-"use client";
+'use client'
+
 
 import Image from "next/image";
 import v3circle from "@/app/assets/v3circle.png";

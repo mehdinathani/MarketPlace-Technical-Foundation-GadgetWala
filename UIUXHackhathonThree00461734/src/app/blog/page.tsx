@@ -1,3 +1,5 @@
+'use client'
+
 import listViewIcon from "@/app/assets/list_view_icon.png";
 import tileViewIcon from "@/app/assets/tile_view_icon.png";
 import Image from "next/image";

@@ -1,3 +1,5 @@
+'use client'
+
 export default function Cancel() {
     return (
         <div className="w-full max-w-lg mx-auto p-6 bg-white shadow-md rounded-md text-center">
